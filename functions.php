@@ -3,6 +3,7 @@
 
 add_action ('wp_enqueue_scripts', 'theme_styles');
 add_action ('wp_enqueue_scripts', 'theme_scripts');
+add_action ('after_setup_theme', 'myMenu');
 add_action ('widgets_init', 'myWidgets');
 
 function myWidgets(){
@@ -19,6 +20,9 @@ function myWidgets(){
 function myMenu(){
     register_nav_menu('headerNav', 'menu in top');
     register_nav_menu('footerNav', 'menu in bottom');
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails', array('post'));
+    add_image_size('post_thumb', 1300, 500, true);
 }
 
 function theme_styles(){
